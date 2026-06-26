@@ -5,7 +5,10 @@ const app = express();
 const connectionString = process.env.POSTGRES_URL || process.env.SUPABASE_DATABASE_URL;
 
 const pool = new Pool({
-  connectionString: connectionString,
+  connectionString: process.env.POSTGRES_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.use(express.json());
