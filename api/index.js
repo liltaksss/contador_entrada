@@ -2,8 +2,10 @@ const express = require("express");
 const { Pool } = require("pg");
 
 const app = express();
+const connectionString = process.env.POSTGRES_URL || process.env.SUPABASE_DATABASE_URL;
+
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  connectionString: connectionString,
 });
 
 app.use(express.json());
